@@ -238,9 +238,7 @@ install_node(){
 	install_ssr_for_each
 	cd /root/shadowsocks
 	echo -e "modify Config.py...\n"
-	sed -i "s#'zhaoj.in'#'jd.hk'#" /root/shadowsocks/userapiconfig.py
 	Userdomain=${Userdomain:-"http://127.0.0.1"}
-	sed -i "s#https://zhaoj.in#${Userdomain}#" /root/shadowsocks/userapiconfig.py
 	Usermukey=${Usermukey:-"mupass"}
 	sed -i "s#glzjin#${Usermukey}#" /root/shadowsocks/userapiconfig.py
 	UserNODE_ID=${UserNODE_ID:-"3"}
@@ -319,7 +317,7 @@ install_node_db(){
 	sed -i "s#'zhaoj.in'#'jd.hk'#" /root/shadowsocks/userapiconfig.py #混淆设置
 	MYSQL_HOST=${MYSQL_HOST:-"http://127.0.0.1"}
 	sed -i "s#MYSQL_HOST = '127.0.0.1'#MYSQL_HOST = '${MYSQL_HOST}'#" /root/shadowsocks/userapiconfig.py
-	MYSQL_DB=${MYSQL_DB:-"root"}
+	MYSQL_DB= "sspanel"
 	sed -i "s#MYSQL_DB = 'shadowsocks'#MYSQL_DB = '${MYSQL_DB}'#" /root/shadowsocks/userapiconfig.py
 	MYSQL_USER=${MYSQL_USER:-"root"}
 	sed -i "s#MYSQL_USER = 'ss'#MYSQL_USER = '${MYSQL_USER}'#" /root/shadowsocks/userapiconfig.py
