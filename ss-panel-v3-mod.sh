@@ -309,14 +309,13 @@ install_node_db(){
 	read -p "Please input your MYSQL_USER: " MYSQL_USER 
 	read -p "Please input your MYSQL_PASS: " MYSQL_PASS 
 	read -p "Please input your Node_ID(like:1): " UserNODE_ID
-	read -p "Please input your MYSQL_DB: (skip)" MYSQL_DB 
 	install_ssr_for_each
 	cd /root/shadowsocks
 	echo -e "modify Config.py...\n"
 	sed -i "s#'modwebapi'#'glzjinmod'#" /root/shadowsocks/userapiconfig.py #改成数据库对接
 	MYSQL_HOST=${MYSQL_HOST:-"http://127.0.0.1"}
 	sed -i "s#MYSQL_HOST = '127.0.0.1'#MYSQL_HOST = '${MYSQL_HOST}'#" /root/shadowsocks/userapiconfig.py
-	MYSQL_DB= "sspanel"
+	MYSQL_DB= 'sspanel'
 	sed -i "s#MYSQL_DB = 'shadowsocks'#MYSQL_DB = '${MYSQL_DB}'#" /root/shadowsocks/userapiconfig.py
 	MYSQL_USER=${MYSQL_USER:-"root"}
 	sed -i "s#MYSQL_USER = 'ss'#MYSQL_USER = '${MYSQL_USER}'#" /root/shadowsocks/userapiconfig.py
