@@ -309,6 +309,7 @@ install_node_db(){
 	read -p "Please input your MYSQL_USER: " MYSQL_USER 
 	read -p "Please input your MYSQL_PASS: " MYSQL_PASS 
 	read -p "Please input your Node_ID(like:1): " UserNODE_ID
+	read -p "Please input your MYSQL_DB: (skip)" MYSQL_DB 
 	install_ssr_for_each
 	cd /root/shadowsocks
 	echo -e "modify Config.py...\n"
