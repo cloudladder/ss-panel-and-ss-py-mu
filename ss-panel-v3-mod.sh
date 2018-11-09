@@ -305,6 +305,7 @@ install_node_db(){
 	}
 	# 取消文件数量限制
 	sed -i '$a * hard nofile 512000\n* soft nofile 512000' /etc/security/limits.conf
+	read -p "Please input your MYSQL_DB: " MYSQL_DB 
 	read -p "Please input your MYSQL_HOST: " MYSQL_HOST
 	read -p "Please input your MYSQL_USER: " MYSQL_USER 
 	read -p "Please input your MYSQL_PASS: " MYSQL_PASS 
@@ -315,7 +316,8 @@ install_node_db(){
 	sed -i "s#'modwebapi'#'glzjinmod'#" /root/shadowsocks/userapiconfig.py #改成数据库对接
 	MYSQL_HOST=${MYSQL_HOST:-"http://127.0.0.1"}
 	sed -i "s#MYSQL_HOST = '127.0.0.1'#MYSQL_HOST = '${MYSQL_HOST}'#" /root/shadowsocks/userapiconfig.py
-	sed -i "s#MYSQL_DB = 'shadowsocks'#MYSQL_DB = ""sspanel""#" /root/shadowsocks/userapiconfig.py
+	MYSQL_DB=${MYSQL_DB:-"root"}
+ 	sed -i "s#MYSQL_DB = 'shadowsocks'#MYSQL_DB = '${MYSQL_DB}'#" /root/shadowsocks/userapiconfig.py
 	MYSQL_USER=${MYSQL_USER:-"root"}
 	sed -i "s#MYSQL_USER = 'ss'#MYSQL_USER = '${MYSQL_USER}'#" /root/shadowsocks/userapiconfig.py
 	MYSQL_PASS=${MYSQL_PASS:-"root"}
